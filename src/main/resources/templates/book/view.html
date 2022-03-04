@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+
+<body>
+<div th:replace="Fragments/reusable :: generic"></div>
+<div th:replace="Fragments/reusable :: navbar"></div>
+<div class="container">
+    <h1>View Book</h1>
+    <ul>
+        <h5><b>Book Name: </b></h5><li th:text="${bookDto.name}"></li>
+        <h5><b>Published Date: </b></h5><li th:text="${bookDto.publishedDate}"></li>
+    </ul>
+    <img th:src="${bookDto.filePath}" height="30%" width="35%">
+</div>
+</body>
+</html>

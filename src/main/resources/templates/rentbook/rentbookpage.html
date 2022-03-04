@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Rent</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+
+<body>
+<div th:replace="Fragments/reusable :: generic"></div>
+<div th:replace="Fragments/reusable :: navbar"></div>
+<div class="container">
+    <h1>Rent a book</h1>
+    <div class="col-md-6">
+        <a th:href="@{~/rentbook/addrentbook}" class="btn btn-primary">Rent</a>
+        <table class="table table-light table-striped table-hover">
+            <thead>
+            <tr>
+                <th scope="col">SN</th>
+                <th scope="col">Name</th>
+                <th scope="col">Code</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="rent, loop : ${rentList}">
+                <th th:text="${loop.count}"></th>
+                <th th:each="member:${memberList}" th:value="${member.id}" th:text="${member.name}"></th>
+                <th th:text="${rent.code}"></th>
+                <td><a th:href="@{~/rentbook/updaterent/} + ${rent.id}" class="btn btn-success">Update</a>
+                    <a th:href="@{~/rentbook/deleterent/} + ${rent.id}" class="btn btn-danger">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+</body>
+</html>

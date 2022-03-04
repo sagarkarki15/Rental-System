@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Category Form</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+<div th:replace="Fragments/reusable :: generic"></div>
+<div th:replace="Fragments/reusable :: navbar"></div>
+<div class="container">
+    <h1>Category Form</h1>
+    <div class="col-md-8">
+        <form th:action="@{~/category/savecategory}" method="post" th:object="${categoryDto}" enctype="multipart/form-data">
+            <input type="hidden" th:field="*{id}">
+            <div class="mb-3">
+                <label class="form-label">Full Name</label>
+                <input type="text" th:field="*{name}" class="form-control" placeholder="Category name">
+                <p class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                <textarea class="form-control" rows="3" th:field="*{description}" placeholder="Write description"></textarea>
+                <p class="error" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>

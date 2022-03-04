@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Return</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+
+<body>
+<div th:replace="Fragments/reusable :: generic"></div>
+<div th:replace="Fragments/reusable :: navbar"></div>
+<div class="container">
+    <h1>Return a book</h1>
+    <div class="col-md-6">
+        <a th:href="@{~/returnbook/return}" class="btn btn-primary">Return</a>
+        <table class="table table-light table-striped table-hover">
+            <thead>
+            <tr>
+                <th scope="col">SN</th>
+                <th scope="col">Name</th>
+                <th scope="col">Code</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="return, loop : ${returnList}">
+                <th th:text="${loop.count}"></th>
+<!--                <th th:each="member:${memberList}" th:value="${member.id}" th:text="${member.name}"></th>-->
+                <th th:text="${return.code}"></th>
+                <td>
+                    <a th:href="@{~/member/deletemember/} + ${return.id}" class="btn btn-danger">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+</body>
+</html>

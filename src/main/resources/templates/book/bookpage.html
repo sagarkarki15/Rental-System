@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Author Setup</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+
+<body>
+<div th:replace="Fragments/reusable :: generic"></div>
+<div th:replace="Fragments/reusable :: navbar"></div>
+<div class="container" >
+    <h1>Book Setup</h1>
+    <div class="col-md-6">
+        <a th:href="@{~/book/addbooks}" class="btn btn-primary">Add Book</a>
+        <table class="table table-light table-striped table-hover">
+            <thead>
+            <tr>
+                <th scope="col">SN</th>
+                <th scope="col">Name</th>
+                <th scope="col">Isbn</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Stock Count</th>
+                <th scope="col">Actions</th>
+
+                <th scope="col">View</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="book, loop : ${listBook}">
+                <th th:text="${loop.count}"></th>
+                <th th:text="${book.name}"></th>
+                <th th:text="${book.isbn}"></th>
+                <th th:text="${book.rating}"></th>
+                <th th:text="${book.stockCount}"></th>
+                <td><a th:href="@{~/book/updatebook/} + ${book.id}" class="btn btn-success">Update</a>
+                    <a th:href="@{~/book/deletebook/} + ${book.id}" class="btn btn-danger">Delete</a></td>
+                <th>
+                    <a th:href="@{~/book/view/} + ${book.id}" class="btn btn-dark">View</a>
+                </th>
+            </tr>
+            </tbody>
+        </table>
+        <p th:text="${message}"></p>
+    </div>
+</div>
+
+
+</body>
+</html>

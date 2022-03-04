@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Member Setup</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+
+<body>
+<div th:replace="Fragments/reusable :: generic"></div>
+<div th:replace="Fragments/reusable :: navbar"></div>
+<div class="container">
+    <h1>Member Setup</h1>
+    <div class="col-md-6">
+        <a th:href="@{~/member/addmember}" class="btn btn-primary">Add Member</a>
+        <table class="table table-light table-striped table-hover">
+            <thead>
+            <tr>
+                <th scope="col">SN</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Address</th>
+                <th scope="col">Mobile Number</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="member, loop : ${listMember}">
+                <th th:text="${loop.count}"></th>
+                <th th:text="${member.name}"></th>
+                <th th:text="${member.email}"></th>
+                <th th:text="${member.address}"></th>
+                <th th:text="${member.mobileNumber}"></th>
+                <td><a th:href="@{~/member/updatemember/} + ${member.id}" class="btn btn-success">Update</a>
+                    <a th:href="@{~/member/deletemember/} + ${member.id}" class="btn btn-danger">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+</body>
+</html>

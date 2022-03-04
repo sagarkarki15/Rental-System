@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Rent</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+<div th:replace="Fragments/reusable :: generic"></div>
+<div th:replace="Fragments/reusable :: navbar"></div>
+<div class="container">
+    <h1>Rent a Book</h1>
+    <div class="col-md-6">
+        <form th:action="@{~/rentbook/saverent}" method="post" th:object="${rentDto}" enctype="multipart/form-data">
+            <input type="hidden" th:field="*{id}">
+            <div class="mb-3">
+                <label class="form-label">Code</label>
+                <input type="text" th:field="*{code}" class="form-control" placeholder="Enter code" >
+                <p class="error" th:if="${#fields.hasErrors('code')}" th:errors="*{code}"></p>
+            </div>
+            <div class="mb-3">
+                <label class="text-dark">Select Book</label>
+                <select th:field="*{bookDto}" class="form-select" aria-label="Default select example">
+                    <option th:each="book : ${listBook}"
+                            th:value="${book.id}"
+                            th:text="${book.name}">
+                    </option>
+                </select>
+                <br>
+            </div>
+            <div class="mb-3">
+                <label class="text-dark">Select Member</label>
+                <select th:field="*{memberDto}" class="form-select" aria-label="Default select example">
+                    <option th:each="member : ${listMember}"
+                            th:value="${member.id}"
+                            th:text="${member.name}">
+                    </option>
+                </select>
+                <br>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>

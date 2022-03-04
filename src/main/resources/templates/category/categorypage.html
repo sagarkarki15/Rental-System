@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Category Setup</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+
+<body>
+<div th:replace="Fragments/reusable :: generic"></div>
+<div th:replace="Fragments/reusable :: navbar"></div>
+<div class="container">
+    <h1>Category Setup</h1>
+    <div class="col-md-6">
+        <a th:href="@{~/category/addcategory}" class="btn btn-primary">Add Category</a>
+        <table class="table table-light table-striped table-hover">
+            <thead>
+            <tr>
+                <th scope="col">SN</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="category, loop : ${listCategory}">
+                <th th:text="${loop.count}"></th>
+                <th th:text="${category.name}"></th>
+                <th th:text="${category.description}"></th>
+                <td><a th:href="@{~/category/updatecategory/} + ${category.id}" class="btn btn-success">Update</a>
+                    <a th:href="@{~/category/deletecategory/} + ${category.id}" class="btn btn-danger">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+</body>
+</html>

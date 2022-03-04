@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Author Form</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+<div th:replace="Fragments/reusable :: generic"></div>
+<div th:replace="Fragments/reusable :: navbar"></div>
+<div class="container">
+    <h1>Author Form</h1>
+    <div class="col-md-6">
+        <form th:action="@{~/author/saveauthor}" method="post" th:object="${authorDto}" enctype="multipart/form-data">
+            <input type="hidden" th:field="*{id}">
+            <div class="mb-3">
+                <label class="form-label">Full Name</label>
+                <input type="text" th:field="*{name}" class="form-control" placeholder="your full name">
+                <p class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="text" th:field="*{email}" class="form-control" placeholder="your email address" >
+                <p class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Phone</label>
+                <input type="text" th:field="*{mobileNumber}" class="form-control" placeholder="your phone number">
+                <p class="error" th:if="${#fields.hasErrors('mobileNumber')}" th:errors="*{mobileNumber}"></p>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>

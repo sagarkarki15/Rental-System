@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Return</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+<div th:replace="Fragments/reusable :: generic"></div>
+<div th:replace="Fragments/reusable :: navbar"></div>
+<div class="container">
+    <h1>Return a Book</h1>
+    <div class="col-md-6">
+        <form th:action="@{~/returnbook/savereturn}" method="post" th:object="${returnDto}" enctype="multipart/form-data">
+            <input type="hidden" th:field="*{id}">
+            <div class="mb-3">
+                <label class="form-label">Code</label>
+                <input type="text" th:field="*{code}" class="form-control" placeholder="Enter code" >
+                <p class="error" th:if="${#fields.hasErrors('code')}" th:errors="*{code}"></p>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Member</label>
+                <input type="text" th:field="*{memberDto}" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Date of Request</label>
+                <input type="date" th:field="*{fromDate}" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Date of Return</label>
+                <input type="date" th:field="*{toDate}" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>
