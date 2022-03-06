@@ -38,6 +38,8 @@ public class BookServiceImpl implements BookService{
                 .name(book.getName())
                 .numberOfPages(book.getNumberOfPages())
                 .isbn(book.getIsbn())
+                .category(book.getCategory())
+//                .author(book.getAuthorList())
                 .rating(book.getRating())
                 .stockCount(book.getStockCount())
                 .publishedDate(book.getPublishedDate()).build()).collect(Collectors.toList());

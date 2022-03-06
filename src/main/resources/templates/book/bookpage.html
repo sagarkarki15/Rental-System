@@ -18,7 +18,7 @@
             <tr>
                 <th scope="col">SN</th>
                 <th scope="col">Name</th>
-                <th scope="col">Isbn</th>
+                <th scope="col">Category</th>
                 <th scope="col">Rating</th>
                 <th scope="col">Stock Count</th>
                 <th scope="col">Actions</th>
@@ -30,7 +30,7 @@
             <tr th:each="book, loop : ${listBook}">
                 <th th:text="${loop.count}"></th>
                 <th th:text="${book.name}"></th>
-                <th th:text="${book.isbn}"></th>
+                <th th:text="${book.category.name}"></th>
                 <th th:text="${book.rating}"></th>
                 <th th:text="${book.stockCount}"></th>
                 <td><a th:href="@{~/book/updatebook/} + ${book.id}" class="btn btn-success">Update</a>

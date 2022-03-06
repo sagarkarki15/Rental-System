@@ -17,16 +17,22 @@
             <thead>
             <tr>
                 <th scope="col">SN</th>
-                <th scope="col">Name</th>
+                <th scope="col">Member Name</th>
+                <th scope="col">Book Name</th>
                 <th scope="col">Code</th>
+                <th scope="col">From</th>
+                <th scope="col">To</th>
                 <th scope="col">Actions</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="rent, loop : ${rentList}">
                 <th th:text="${loop.count}"></th>
-                <th th:each="member:${memberList}" th:value="${member.id}" th:text="${member.name}"></th>
+                <th th:text="${rent.member.name}"></th>
+                <th th:text="${rent.book.name}"></th>
                 <th th:text="${rent.code}"></th>
+                <th th:text="${rent.fromDate}"></th>
+                <th th:text="${rent.toDate}"></th>
                 <td><a th:href="@{~/rentbook/updaterent/} + ${rent.id}" class="btn btn-success">Update</a>
                     <a th:href="@{~/rentbook/deleterent/} + ${rent.id}" class="btn btn-danger">Delete</a></td>
             </tr>

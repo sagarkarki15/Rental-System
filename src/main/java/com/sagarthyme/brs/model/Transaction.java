@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.Date;
 
 @Entity
 @Data
@@ -21,9 +22,9 @@ public class Transaction {
 
     private String code;
 
-    private String fromDate;
+    private Date fromDate;
 
-    private String toDate;
+    private Date toDate;
 
     private String rentStatus;
 

@@ -7,10 +7,10 @@ import lombok.Getter;
 @Getter
 public enum RentType {
 
-    RENT(0, "Inactive"),
-    RETURN(1, "Active");
+    RENT,
+    RETURN;
 
-    private Integer key;
+    /*private Integer key;
     private String status;
 
     public RentType getByKey() throws Exception{
@@ -24,5 +24,5 @@ public enum RentType {
             }
         }
         throw new Exception("Invalid status key");
-    }
+    }*/
 }

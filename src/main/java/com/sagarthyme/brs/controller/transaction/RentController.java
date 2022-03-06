@@ -28,7 +28,7 @@ public class RentController {
     @GetMapping
     public String openMainPage(Model model){
         model.addAttribute("rentList", transactionService.findAll());
-        model.addAttribute("memberList", memberService.findAll());
+//        model.addAttribute("memberList", memberService.findAll());
         return "rentbook/rentbookpage";
     }
 
